@@ -47,10 +47,11 @@ class Conversor extends Component {
         return (
             <div className="conversor">
                 { this.capturar_unidMonetaria() }
-                <p>{ this.props.moedaA } para { this.props.moedaB }</p>
+                <h2>{ this.props.moedaA } para { this.props.moedaB }</h2>
+                <a href="javascript:void(0);">alterar unidades</a>
                 <input type="number" placeholder="Digite um valor" onChange={(event) => { this.setState({ valor: event.target.value } ) }}></input>
                 <input type="button" value="Converter" onClick={ this.converter }></input><hr/>
-                <h2>{ this.state.unidadeMonetaria } { this.state.resultado }</h2>
+                <p>{ this.state.unidadeMonetaria } { this.state.resultado }</p>
             </div>
         );
     }

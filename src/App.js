@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import Conversor from './components/Conversor';
+import SelecionarMoeda from './components/SelecionarMoeda';
 
 function App() {
   return (
     <div className="app">
-      <Conversor moedaA="USD" moedaB="BRL" />
+      <SelecionarMoeda />
     </div>
   );
 }
