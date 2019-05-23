@@ -37,7 +37,6 @@ class SelecionarMoeda extends Component {
         return (
             <div className="app">
                 <h2>Selecione as unidades monetárias</h2><hr/>
-
                 <label>De
                     <select onChange={ (event) => { this.setState({ unidadeA: event.target.value }) } }>
                         <option disabled defaultValue>Selecione</option>
@@ -46,7 +45,6 @@ class SelecionarMoeda extends Component {
                         <option>USD</option>
                     </select>
                 </label>
-
                 <label>Para
                     <select onChange={ (event) => { this.setState({ unidadeB: event.target.value }) } }>
                         <option disabled defaultValue>Selecione</option>
@@ -56,8 +54,8 @@ class SelecionarMoeda extends Component {
                     </select>
                 </label>
                 <p>{ this.state.unidadeA } – { this.state.unidadeB }</p><hr/>
-                <NavLink to='/convesor'>
-                    <input type="button" value="Continuar" onClick={ this.checarValores }></input>
+                <NavLink to={{ pathname: '/conversor', conversorProps:{ unidadeA: this.state.unidadeA, unidadeB: this.state.unidadeB } }}>
+                    <input type="button" value="Continuar"></input>
                 </NavLink>
             </div>
         );

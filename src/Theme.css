@@ -29,6 +29,10 @@ body {
   color:#ce7f7c !important;
 }
 
+.block {
+  display:block !important;
+}
+
 .app hr {
   margin:40px 0;
   border:0;
@@ -38,7 +42,7 @@ body {
 
 .app a:link, .app a:hover, .app a:active, .app a:visited {
   color:#97cce4;
-  display:block;
+  display:inline-block;
   margin:0 0 30px 0;
 }
 

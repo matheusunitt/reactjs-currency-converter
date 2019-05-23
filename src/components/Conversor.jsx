@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../Theme.css';
 
+import { NavLink } from 'react-router-dom';
+
 class Conversor extends Component {
 
     constructor(props) {
@@ -17,7 +19,7 @@ class Conversor extends Component {
     }
 
     capturar_unidMonetaria() {
-        let moedaDestino = `${ this.props.moedaB }`;
+        let moedaDestino = `${ this.props.location.conversorProps.unidadeB }`;
         let url = `https://gist.githubusercontent.com/Fluidbyte/2973986/raw/b0d1722b04b0a737aade2ce6e055263625a0b435/Common-Currency.json`
 
         fetch(url).then(res => {
@@ -30,13 +32,13 @@ class Conversor extends Component {
     }
 
     converter() {
-        let de_para = `${ this.props.moedaA },${ this.props.moedaB }`;
+        let de_para = `${ this.props.location.conversorProps.unidadeA },${ this.props.location.conversorProps.unidadeB }`;
         let url = `https://api.exchangeratesapi.io/latest?symbols=${ de_para }`;
 
         fetch(url).then(res => {
             return res.json();
         }).then(dados => {
-            let cotacao = dados.rates[`${this.props.moedaB}`];
+            let cotacao = dados.rates[`${ this.props.location.conversorProps.unidadeB }`];
             let resultado = (parseFloat(this.state.valor) * cotacao).toFixed(2);
 
             this.setState({ resultado });
@@ -47,8 +49,8 @@ class Conversor extends Component {
         return (
             <div className="app">
                 { this.capturar_unidMonetaria() }
-                <h2>{ this.props.moedaA } para { this.props.moedaB }</h2>
-                <a href="javascript:void(0);">alterar unidades</a>
+                <h2>{ this.props.location.conversorProps.unidadeA } para { this.props.location.conversorProps.unidadeB }</h2>
+                <NavLink to='/' className="block">alterar unidades</NavLink>
                 <input type="number" placeholder="Digite um valor" onChange={(event) => { this.setState({ valor: event.target.value } ) }}></input>
                 <input type="button" value="Converter" onClick={ this.converter }></input><hr/>
                 <p>{ this.state.unidadeMonetaria } { this.state.resultado }</p>
