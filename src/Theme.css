@@ -1,0 +1,89 @@
+body {
+  background-color:#fff;
+  font-family:Montserrat;
+}
+
+.app {
+  width:500px;
+  height:auto;
+  border:1px solid #e2e2e2;
+  border-radius:5px;
+  padding:20px;
+  box-sizing:border-box;
+  margin:40px auto;
+  text-align:center;
+}
+
+.app h2 {
+  font-size:25px;
+  color:gray;
+}
+
+.app p {
+  color:#aace7c;
+  font-weight:bold;
+  font-size:23px;
+}
+
+.errlbl {
+  color:#ce7f7c !important;
+}
+
+.app hr {
+  margin:40px 0;
+  border:0;
+  background-color:#e2e2e2;
+  height:1px;
+}
+
+.app a:link, .app a:hover, .app a:active, .app a:visited {
+  color:#97cce4;
+  display:block;
+  margin:0 0 30px 0;
+}
+
+.app label {
+  margin:20px;
+  display:inline-table;
+  justify-content:center;
+}
+
+.app select {
+  padding:10px;
+  box-sizing:border-box;
+  border-radius:3px;
+  outline:0;
+  border:1px solid #efefef;
+  margin-left:10px;
+  vertical-align:middle;
+}
+
+.app input[type='number'] {
+  padding:10px;
+  box-sizing:border-box;
+  border-radius:3px;
+  outline:0;
+  border:1px solid #efefef;
+}
+
+.app input[type='number']:focus {
+  border:1px solid #a7e3ff;
+  transition:ease-in .4s;
+}
+
+.app input[type='button'] {
+  padding:10px;
+  box-sizing:border-box;
+  border-radius:3px;
+  outline:0;
+  border:1px solid #ececec;
+  margin:0 10px;
+  background-color:#f9f9f9;
+  cursor:pointer;
+}
+
+.app input[type='button']:hover {
+  background-color:#f9f9f9;
+  border:1px solid #a7e3ff;
+  transition:ease-in .4s;
+}
