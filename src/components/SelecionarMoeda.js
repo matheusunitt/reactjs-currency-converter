@@ -10,10 +10,25 @@ class SelecionarMoeda extends Component {
         this.state = {
             unidadeA: '',
             unidadeB: '',
+            unidadesMonetarias: []
         }
 
         this.checarValores = this.checarValores.bind(this);
         this.avancar = this.avancar.bind(this);
+    }
+
+    getUnidadeDados() {
+        let url = `https://gist.githubusercontent.com/Fluidbyte/2973986/raw/b0d1722b04b0a737aade2ce6e055263625a0b435/Common-Currency.json`
+
+        fetch(url).then(res => {
+            return res.json();
+        }).then(dados => {
+            this.setState({ unidadesMonetarias: Object.values(dados) });
+        })
+    }
+
+    componentDidMount() {
+        this.getUnidadeDados();
     }
 
     checarValores(e) {
@@ -41,24 +56,21 @@ class SelecionarMoeda extends Component {
     }
 
     render() {
+        const { unidadesMonetarias, unidadeA, unidadeB } = this.state;
         return (
             <div className="app">
                 <form onSubmit={this.checarValores}>
                     <h2>Selecione as unidades monetárias</h2><hr />
                     <label>De
-                        <select onChange={(e) => { this.setState({ unidadeA: e.target.value }) }} defaultValue={this.state.unidadeA}>
+                        <select onChange={(e) => { this.setState({ unidadeA: e.target.value }) }} defaultValue={unidadeA}>
                             <option disabled value=''>Selecione</option>
-                            <option value='BRL'>BRL</option>
-                            <option value='CAD'>CAD</option>
-                            <option value='USD'>USD</option>
+                            {(unidadesMonetarias || []).map((unidade, k) => <option key={k} value={unidade.code}>{unidade.code}</option>)}
                         </select>
                     </label>
                     <label>Para
-                        <select onChange={(e) => { this.setState({ unidadeB: e.target.value }) }} defaultValue={this.state.unidadeB}>
+                        <select onChange={(e) => { this.setState({ unidadeB: e.target.value }) }} defaultValue={unidadeB}>
                             <option disabled value=''>Selecione</option>
-                            <option value='BRL'>BRL</option>
-                            <option value='CAD'>CAD</option>
-                            <option value='USD'>USD</option>
+                            {(unidadesMonetarias || []).map((unidade, k) => <option key={k} value={unidade.code}>{unidade.code}</option>)}
                         </select>
                     </label>
                     <hr />
