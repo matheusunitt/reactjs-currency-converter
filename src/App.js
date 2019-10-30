@@ -13,7 +13,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={SelecionarMoeda} />
           <Route path='/conversor' component={Conversor} />
-          <Route component={PaginaDesconhecida} /> { /* Caso o path não exista */ }
+          <Route component={PaginaDesconhecida} />
         </Switch>
       </BrowserRouter>
     );
